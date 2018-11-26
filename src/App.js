@@ -1,28 +1,78 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import Table from './components/Table'
+import Form from "./components/Form";
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
+    state = {
+        characters: [
+            // { 'name': 'Alexiel', 'job': 'God Sworn' },
+            // { 'name': 'Monika', 'job': 'kid Like' },
+            // { 'name': 'Vira', 'job': 'Sister Lover' }
+        ],
+        data: []
+    };
+
+    // componentDidMonunt() {
+    //     const url = "https://en.wikipedia.org/w/api.php?action=opensearch&search=Seona+Dancing&format=json&origin=*";
+    //
+    //     fetch(url)
+    //         .then(res => {
+    //         console.log(res)
+    //         })
+    //         .then(res => {
+    //             this.setState({
+    //                 data: res
+    //             })
+    //         })
+    // }
+
+    removeCharacter = index => {
+        const {characters} = this.state
+
+        this.setState({
+            characters: characters.filter((character, i) => {
+                return i !== index
+            })
+        })
+    }
+    handleSubmit = character => {
+        this.setState({characters: [...this.state.characters, character]})
+    }
+
+    render() {
+        const characters = [
+            { 'name': 'Alexiel', 'job': 'God Sworn' },
+            { 'name': 'Monika', 'job': 'kid Like' },
+            { 'name': 'Vira', 'job': 'Sister Lover' }
+        ]
+
+        console.log('props值', characters)
+        console.log('state值', this.state.characters)
+
+        const { data } = this.state
+        const result = data.map((entry, index) => {
+            return <li key={index}>{entry}</li>
+        })
+
+        return (
+            <div className="App">
+                <h1>Hello World</h1>
+                <div className="container">
+                    <Table
+                        // characterData={characters}
+                        characterData={this.state.characters}
+                        removeCharacter={this.removeCharacter}
+                    />
+                    <Form
+                        handleSubmit={this.handleSubmit}
+                    />
+                </div>
+                <div>
+                    <ul>{result}</ul>
+                </div>
+            </div>
+        )
+    }
 }
 
-export default App;
+export default App
