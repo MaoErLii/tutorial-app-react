@@ -1,30 +1,17 @@
 import React, { Component } from 'react'
 import Table from './components/Table'
 import Form from "./components/Form";
+import GhibliList from './components/GhibliList'
 
 class App extends Component {
     state = {
         characters: [
-            // { 'name': 'Alexiel', 'job': 'God Sworn' },
-            // { 'name': 'Monika', 'job': 'kid Like' },
-            // { 'name': 'Vira', 'job': 'Sister Lover' }
+            { 'name': 'Alexiel', 'job': 'God Sworn' },
+            { 'name': 'Monika', 'job': 'kid Like' },
+            { 'name': 'Vira', 'job': 'Sister Lover' }
         ],
         data: []
     };
-
-    // componentDidMonunt() {
-    //     const url = "https://en.wikipedia.org/w/api.php?action=opensearch&search=Seona+Dancing&format=json&origin=*";
-    //
-    //     fetch(url)
-    //         .then(res => {
-    //         console.log(res)
-    //         })
-    //         .then(res => {
-    //             this.setState({
-    //                 data: res
-    //             })
-    //         })
-    // }
 
     removeCharacter = index => {
         const {characters} = this.state
@@ -39,6 +26,19 @@ class App extends Component {
         this.setState({characters: [...this.state.characters, character]})
     }
 
+    componentDidMount() {
+        const url ="https://ghibliapi.herokuapp.com/films"
+        fetch (url, {
+            method: 'GET'
+        })
+        .then((res) => res.text()).then(res => {
+            console.log()
+            this.setState({
+                data: JSON.parse(res)
+            })
+        })
+    }
+
     render() {
         const characters = [
             { 'name': 'Alexiel', 'job': 'God Sworn' },
@@ -48,11 +48,8 @@ class App extends Component {
 
         console.log('props值', characters)
         console.log('state值', this.state.characters)
+        console.log('data的值', this.state.data)
 
-        const { data } = this.state
-        const result = data.map((entry, index) => {
-            return <li key={index}>{entry}</li>
-        })
 
         return (
             <div className="App">
@@ -66,9 +63,10 @@ class App extends Component {
                     <Form
                         handleSubmit={this.handleSubmit}
                     />
-                </div>
-                <div>
-                    <ul>{result}</ul>
+                    <img src="https://raw.githubusercontent.com/taniarascia/sandbox/master/ghibli/logo.png" alt="" />
+                    <GhibliList
+                        filmData = {this.state.data}
+                    />
                 </div>
             </div>
         )
