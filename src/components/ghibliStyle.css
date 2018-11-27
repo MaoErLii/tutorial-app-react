@@ -2,6 +2,10 @@
     display: flex;
     flex-wrap: wrap;
 }
+.totoro-img{
+    display: block;
+    margin: 0 auto;
+}
 .card{
     margin: 1rem;
     background: white;

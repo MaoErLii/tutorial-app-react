@@ -17,11 +17,14 @@ class Form extends Component {
         this.setState({
             [name] : value
         })
-        // console.log(this.state)
+        // console.log('input', this.state)
     }
     submitForm = () => {
+        // 将Form组件的state值传到App组件的handleSubmit方法
         this.props.handleSubmit(this.state);
+        // 初始化Form组件的state
         this.setState(this.initialState)
+        // console.log('Form submit initialState', this.initialState)
     }
 
     render () {
