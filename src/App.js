@@ -3,6 +3,7 @@ import Table from './components/Table'
 import Form from "./components/Form";
 import GhibliList from './components/GhibliList'
 import Time from './components/Time'
+import TempCalclator from './components/TempCalclator'
 
 class App extends Component {
     state = {
@@ -84,6 +85,7 @@ class App extends Component {
                     timeData = {this.state.time}
                 >
                 </Time>
+                <TempCalclator/>
                 {/*<h2>现在是{new Date().toLocaleTimeString()}.</h2>*/}
                 <div className="container">
                     <Table
@@ -99,7 +101,6 @@ class App extends Component {
                             filmData = {this.state.data}
                         />
                     }
-
                 </div>
             </div>
         )
