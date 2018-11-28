@@ -1,10 +1,19 @@
 import React, { Component } from 'react'
 
 const BiolingVerdict = props => {
-    if(props.celsius >= 100) {
-        return <p>The water would boil</p>
+    console.log(props)
+    if (props.scale === 'c') {
+        if(props.celsius >= 100) {
+            return <p>The water would boil</p>
+        } else {
+            return <p>The water would not boil</p>
+        }
     } else {
-        return <p>The water would not boil</p>
+        if (tryConvert(props.celsius, toCelsius) >= 100) {
+            return <p>The water would boil</p>
+        } else {
+            return <p>The water would not boil</p>
+        }
     }
 }
 
@@ -35,17 +44,20 @@ class TempInput extends Component {
     constructor(props) {
         super(props);
         this.handleChange = this.handleChange.bind(this);
-        this.state = {temperature: ''};
+        // this.state = {temperature: ''};
     }
 
     handleChange(e){
-        this.setState({
-            temperature: e.target.value
-        })
+        // this.setState({
+        //     temperature: e.target.value
+        // })
+        this.props.onTemperatureChange(e.target.value)
     }
 
     render () {
-        const temperature = this.state.temperature;
+        console.log(this.props)
+        // const temperature = this.state.temperature;
+        const temperature = this.props.temperature;
         const scale = this.props.scale
         console.log('当前温度是', temperature)
         return (
@@ -57,6 +69,7 @@ class TempInput extends Component {
                 />
                 <BiolingVerdict
                     celsius={temperature}
+                    scale={scale}
                 />
             </fieldset>
         )
@@ -64,17 +77,41 @@ class TempInput extends Component {
 }
 
 class TempCalclator extends Component {
+    constructor(props) {
+        super(props);
+        this.handleCelsiusChange = this.handleCelsiusChange.bind(this);
+        this.handleFahrenheitChange = this.handleFahrenheitChange.bind(this);
+        this.state = {temperature: '', scale: 'c'};
+    }
+
+    handleCelsiusChange(temperature) {
+        this.setState({scale: 'c', temperature});
+    }
+
+    handleFahrenheitChange(temperature) {
+        this.setState({scale: 'f', temperature});
+    }
+
     render () {
+        const scale = this.state.scale;
+        const temperature = this.state.temperature;
+        const celsius = scale === 'f' ? tryConvert(temperature, toCelsius) : temperature;
+        const fahrenheit = scale === 'c' ? tryConvert(temperature, toFahrenheit) : temperature;
         // const temperature = this.state.temperature;
+        console.log(this.state)
 
         // console.log('当前温度是', temperature)
         return (
             <div>
                 <TempInput
                     scale="c"
+                    temperature = {celsius}
+                    onTemperatureChange={this.handleCelsiusChange}
                 />
                 <TempInput
                     scale="f"
+                    temperature = {fahrenheit}
+                    onTemperatureChange={this.handleFahrenheitChange}
                 />
             </div>
         )

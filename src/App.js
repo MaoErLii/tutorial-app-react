@@ -4,6 +4,9 @@ import Form from "./components/Form";
 import GhibliList from './components/GhibliList'
 import Time from './components/Time'
 import TempCalclator from './components/TempCalclator'
+import WarningComponent from './components/WarningBanner'
+import Header from './components/layout/Header'
+import Sider from './components/layout/Sider'
 
 class App extends Component {
     state = {
@@ -80,11 +83,14 @@ class App extends Component {
 
         return (
             <div className="App">
+                <Header/>
+                <Sider/>
                 <h1>Hello World</h1>
                 <Time
                     timeData = {this.state.time}
                 >
                 </Time>
+                <WarningComponent/>
                 <TempCalclator/>
                 {/*<h2>现在是{new Date().toLocaleTimeString()}.</h2>*/}
                 <div className="container">

@@ -25,6 +25,9 @@
  * 2. Prevent iOS and IE text size adjust after device orientation change,
  *    without disabling user zoom.
  */
+
+@import '~antd/dist/antd.css';
+
 html {
   -ms-text-size-adjust: 100%;
   /* 2 */
