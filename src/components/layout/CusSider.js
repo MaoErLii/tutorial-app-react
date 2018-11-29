@@ -1,22 +1,21 @@
 import React, {Component} from 'react'
 import {Menu} from 'antd'
 
-class Header extends Component {
+class CusSider extends Component {
     render() {
-        return (
+        return(
             <Menu
-                mode="horizontal"
             >
                 <Menu.Item>
-                    首页
+                    侧边栏一
                 </Menu.Item>
                 <Menu.Item>
-                    我的
+                    侧边栏二
                 </Menu.Item>
             </Menu>
         )
-
     }
 }
 
-export default Header
+export default CusSider
+

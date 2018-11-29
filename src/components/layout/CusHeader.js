@@ -1,23 +1,24 @@
 import React, {Component} from 'react'
 import {Menu} from 'antd'
 
-class Sider extends Component {
+class CusHeader extends Component {
     render() {
-        return(
+        return (
             <Menu
-                mode="vertical"
-                style={{width: 256}}
+                mode="horizontal"
+                theme="light"
+                style={{lineHeight: '64px'}}
             >
                 <Menu.Item>
-                    侧边栏一
+                    首页
                 </Menu.Item>
                 <Menu.Item>
-                    侧边栏二
+                    我的
                 </Menu.Item>
             </Menu>
         )
+
     }
 }
 
-export default Sider
-
+export default CusHeader

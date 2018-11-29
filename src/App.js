@@ -5,8 +5,13 @@ import GhibliList from './components/GhibliList'
 import Time from './components/Time'
 import TempCalclator from './components/TempCalclator'
 import WarningComponent from './components/WarningBanner'
-import Header from './components/layout/Header'
-import Sider from './components/layout/Sider'
+import CusHeader from './components/layout/CusHeader'
+import CusSider from './components/layout/CusSider'
+import {Layout} from 'antd'
+import './style/cusStyle.css'
+
+const { Footer, Sider, Content } = Layout
+
 
 class App extends Component {
     state = {
@@ -63,7 +68,7 @@ class App extends Component {
     //         time: new Date()
     //     })
     // }
-    //
+
     // componentWillUnmount() {
     //     clearInterval(this.timerID)
     // }
@@ -83,31 +88,39 @@ class App extends Component {
 
         return (
             <div className="App">
-                <Header/>
-                <Sider/>
-                <h1>Hello World</h1>
-                <Time
-                    timeData = {this.state.time}
-                >
-                </Time>
-                <WarningComponent/>
-                <TempCalclator/>
-                {/*<h2>现在是{new Date().toLocaleTimeString()}.</h2>*/}
-                <div className="container">
-                    <Table
-                        // characterData={characters}
-                        characterData={characters}
-                        removeCharacter={this.removeCharacter}
-                    />
-                    <Form
-                        handleSubmit={this.handleSubmit}
-                    />
-                    { this.state.data.length > 0 &&
-                        <GhibliList
-                            filmData = {this.state.data}
-                        />
-                    }
-                </div>
+                <Layout>
+                    <div className="header">
+                        <CusHeader/>
+                    </div>
+                    <Layout>
+                        <Sider  className="side-bar" theme="light"><CusSider/></Sider>
+                        <Content className="content">
+                            <h1>Hello World</h1>
+                            <Time
+                                timeData = {this.state.time}
+                            >
+                            </Time>
+                            <WarningComponent/>
+                            <TempCalclator/>
+                            <div className="container">
+                                <Table
+                                    // characterData={characters}
+                                    characterData={characters}
+                                    removeCharacter={this.removeCharacter}
+                                />
+                                <Form
+                                    handleSubmit={this.handleSubmit}
+                                />
+                                { this.state.data.length > 0 &&
+                                <GhibliList
+                                    filmData = {this.state.data}
+                                />
+                                }
+                            </div>
+                        </Content>
+                    </Layout>
+                    <Footer className="footer">Footer</Footer>
+                </Layout>
             </div>
         )
     }

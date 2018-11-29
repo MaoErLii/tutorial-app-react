@@ -1,0 +1,15 @@
+.header{
+    padding: 0 50px;
+    margin: 0 0 5px 0;
+    background: white;
+}
+.side-bar{
+ min-height: 100px;
+}
+.content{
+    margin: 5px 24px 0;
+    background: white;
+}
+.footer{
+    text-align: center;
+}
