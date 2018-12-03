@@ -34,6 +34,7 @@ const Topics = ({ match }) => (
 const AppRouter = () => (
     <Router>
         <div>
+            <h2>React-router-dom</h2>
             <nav>
                 <ul>
                     <li>
