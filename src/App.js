@@ -8,6 +8,7 @@ import WarningComponent from './components/WarningBanner'
 import CusHeader from './components/layout/CusHeader'
 import CusSider from './components/layout/CusSider'
 import {Layout} from 'antd'
+import AppRouter from './router/AppRouter'
 import './style/cusStyle.css'
 
 const { Footer, Sider, Content } = Layout
@@ -93,13 +94,16 @@ class App extends Component {
                         <CusHeader/>
                     </div>
                     <Layout>
-                        <Sider  className="side-bar" theme="light"><CusSider/></Sider>
+                        <Sider  className="side-bar" theme="light">
+                            <CusSider/>
+                        </Sider>
                         <Content className="content">
                             <h1>Hello World</h1>
                             <Time
                                 timeData = {this.state.time}
                             >
                             </Time>
+                            <AppRouter/>
                             <WarningComponent/>
                             <TempCalclator/>
                             <div className="container">
