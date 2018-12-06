@@ -9,10 +9,36 @@ import CusHeader from './components/layout/CusHeader'
 import CusSider from './components/layout/CusSider'
 import {Layout} from 'antd'
 import AppRouter from './router/AppRouter'
+import Counter from './components/Counter'
+import { Provider } from 'react-redux'
+// import { createStore } from 'redux'
+// import todoApp from './store/reducer'
+import store from './store/store'
 import './style/cusStyle.css'
+// import TodoListExample from './TodoListExample/index'
+// import {addTodo} from "./store/action";
 
 const { Footer, Sider, Content } = Layout
+//
+// const initialState = {
+//     count: 0
+// }
 
+// function reducer(state = initialState, action) {
+//     if (action.type === 'INCREMENT') {
+//         return {
+//             count: state.count + 1
+//         }
+//     }
+//     if (action.type === 'DECREMENT') {
+//         return {
+//             count: state.count - 1
+//         }
+//     }
+//     return state
+// }
+
+// const store = createStore(todoApp)
 
 class App extends Component {
     state = {
@@ -81,7 +107,6 @@ class App extends Component {
         //     { 'name': 'Vira', 'job': 'Sister Lover' }
         // ]
         const characters = this.state.characters
-
         // console.log('props值', characters)
         // console.log('state值', this.state.characters)
         console.log('data的值', this.state.data)
@@ -99,10 +124,16 @@ class App extends Component {
                         </Sider>
                         <Content className="content">
                             <h1>Hello World</h1>
+                            {/*<TodoListExample/>*/}
                             <Time
                                 timeData = {this.state.time}
                             >
                             </Time>
+
+                            <Provider store={store}>
+                                <Counter/>
+                            </Provider>
+
                             <AppRouter/>
                             <WarningComponent/>
                             <TempCalclator/>
