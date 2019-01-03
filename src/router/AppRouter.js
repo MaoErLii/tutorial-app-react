@@ -1,10 +1,12 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import TempCalclator from "../components/TempCalclator";
 // import Time from '../components/Time'
 
 const Index = () => (
         <div>
             <h2>Home</h2>
+            <TempCalclator/>
         </div>
     );
 const About = () => <h2>About</h2>

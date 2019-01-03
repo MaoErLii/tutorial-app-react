@@ -12,9 +12,9 @@ class CusHeader extends Component {
                 <Menu.Item>
                     首页
                 </Menu.Item>
-                <Menu.Item>
-                    我的
-                </Menu.Item>
+                    {/*<Menu.Item>*/}
+                        {/*我的*/}
+                    {/*</Menu.Item>*/}
             </Menu>
         )
 

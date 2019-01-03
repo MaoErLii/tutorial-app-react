@@ -3,7 +3,7 @@ import Table from './components/Table'
 import Form from "./components/Form";
 import GhibliList from './components/GhibliList'
 import Time from './components/Time'
-import TempCalclator from './components/TempCalclator'
+// import TempCalclator from './components/TempCalclator'
 import WarningComponent from './components/WarningBanner'
 import CusHeader from './components/layout/CusHeader'
 import CusSider from './components/layout/CusSider'
@@ -105,7 +105,7 @@ class App extends Component {
                             </Time>
                             <AppRouter/>
                             <WarningComponent/>
-                            <TempCalclator/>
+                            {/*<TempCalclator/>*/}
                             <div className="container">
                                 <Table
                                     // characterData={characters}
