@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { BrowserRouter, Route, Redirect } from 'react-router-dom'
 import Home from '../src/pages/Home'
 import MyInfo from '../src/pages/myInfo'
+import Header from '../src/layout/Header'
 import './style/cusStyle.css'
 import Switch from "react-router/es/Switch";
 
@@ -32,10 +33,12 @@ class App extends Component {
         return (
             <BrowserRouter>
                 <div className="App">
+                    <Header></Header>
                     <Switch>
                         <Route path="/" exact component={Home} />
-                        <Route path="/users" component={MyInfo} />
-                        <Redirect to={Home}/>
+                        <Route path="/users" exact component={MyInfo} />
+                        {/*<Route path="/users" component={MyInfo} />*/}
+                        <Redirect to="/"/>
                     </Switch>
                 </div>
             </BrowserRouter>
